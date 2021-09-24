@@ -8,7 +8,7 @@ const exphbs = require('express-handlebars')
 const session = require('express-session')
 // Sequelize store session
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const helpers = require('./utils/helpers/helper');
+const helpers = require('./utils/helper');
 
 
 // init handlebars for html templates
@@ -17,7 +17,7 @@ const hbs = exphbs.create({ helpers });
 // init sessions
 const sess = {
     secret: 'Super secret secret',
-    cookie: { maxAge: 7200000 },
+    cookie: {},
     resave: false,
     saveUninitialized: true,
     store: new SequelizeStore({
