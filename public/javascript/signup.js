@@ -1,13 +1,11 @@
-async function newFormHandler(event){
+async function signupFormHandler(event) {
     event.preventDefault();
-
-    //get info from signup form
-    const title = document.querySelector('#username-signup').ariaValueMax.trim();
+    const username = document.querySelector('#username-signup').value.trim();
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
 
     if (username && email && password) {
-        // POST the new user to the user table in the database
+        // POST new user
         const response = await fetch('/api/users', {
             method: 'post',
             body: JSON.stringify({
@@ -17,7 +15,7 @@ async function newFormHandler(event){
             }),
             headers: {'Content-Type': 'application/json'}
         });
-      
+
         if (response.ok) {
             alert('Account created! Logging you in now.');
             document.location.replace('/dashboard');
