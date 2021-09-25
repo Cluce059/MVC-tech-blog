@@ -3,14 +3,14 @@ require('dotenv').config();
 const express = require('express');
 const routes = require('./controllers/');
 const sequelize = require('./config/connection');
-const exphbs = require('express-handlebars')
+
 // Express session for session cookies
-const session = require('express-session')
+const session = require('express-session');
 // Sequelize store session
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const helpers = require('./utils/helper');
+const helpers = require('./utils/helpers');
 
-
+const exphbs = require('express-handlebars');
 // init handlebars for html templates
 const hbs = exphbs.create({ helpers });
 
