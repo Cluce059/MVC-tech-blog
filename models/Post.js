@@ -20,10 +20,10 @@ Post.init(
       type: DataTypes.TEXT,
       allowNull: false,
       validate: {
-        //must be at least 1 char long
-        len: [1]
+          //must be at least 1 char long
+          len: [1]
       }
-    },
+  },
     user_id: {
       type: DataTypes.INTEGER,
       references: {

@@ -1,7 +1,7 @@
 async function editFormHandler(event){
     event.preventDEfault();
 
-    //get post id from url
+    //get post id from route
     const id = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
     ];

@@ -3,7 +3,7 @@ const sequelize = require('../../config/connection');
 const { Post, User, Comment, Vote } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// get all users
+// get all posts
 router.get('/', (req, res) => {
   console.log('======================');
   Post.findAll({
@@ -11,10 +11,14 @@ router.get('/', (req, res) => {
       'id',
       'post_text',
       'title',
-      'created_at'
+      'created_at',
     ],
     order: [[ 'created_at', 'DESC']],
     include: [
+      {
+        model: User,
+        attributes: ['username']
+      },
       {
         model: Comment,
         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
@@ -22,10 +26,6 @@ router.get('/', (req, res) => {
           model: User,
           attributes: ['username']
         }
-      },
-      {
-        model: User,
-        attributes: ['username']
       }
     ]
   })
@@ -36,6 +36,7 @@ router.get('/', (req, res) => {
     });
 });
 
+//get api/posts:id
 router.get('/:id', (req, res) => {
   Post.findOne({
     where: {
@@ -44,9 +45,14 @@ router.get('/:id', (req, res) => {
     attributes: [
       'id',
       'post_text',
-      'title'
+      'title',
+      'created_at',
     ],
     include: [
+      {
+        model: User,
+        attributes: ['username']
+      },
       {
         model: Comment,
         attributes: ['id', 'comment_text', 'post_id', 'user_id'],
@@ -54,10 +60,7 @@ router.get('/:id', (req, res) => {
           model: User,
           attributes: ['username']
         }
-      },
-      {
-        model: User,
-        attributes: ['username']
+
       }
     ]
   })
@@ -74,6 +77,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
+//post api/posts
 router.post('/', withAuth, (req, res) => {
   /* expects 
   {
@@ -82,15 +86,15 @@ router.post('/', withAuth, (req, res) => {
     "user_id": 1
   }
     */
-  Post.create({
-    title: req.body.title,
-    post_text: req.body.post_text,
-    user_id: req.session.user_id
+    Post.create({
+      title: req.body.title,
+      post_text: req.body.post_text,
+      user_id: req.session.user_id
   })
     .then(dbPostData => res.json(dbPostData))
     .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
+        console.log(err);
+        res.status(500).json(err);
     });
 });
 
