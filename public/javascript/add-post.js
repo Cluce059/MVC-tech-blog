@@ -3,7 +3,7 @@ async function newFormHandler(event){
 
     //get post title and text from form
     const title = document.querySelector('input[name="post-title"]').value;
-    const post_text = document.querySelector('textarea[name="post-text"]').value;
+    const post_text = document.querySelector('input[name="post-text"]').value;
 
     //use add new post route 
     //user_id added form session info in post route
@@ -27,4 +27,4 @@ async function newFormHandler(event){
     }
 };
 
-document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);
+document.querySelector('#new-post-form').addEventListener('submit', newFormHandler);
