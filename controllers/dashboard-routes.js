@@ -111,7 +111,10 @@ router.get('/edituser', withAuth, (req, res) => {
   });
 
   //new post
-  router.get('/new', (req, res) => {
+  router.get('/new', (req, res, err) => {
+    if(err){
+      console.log(err);
+    }
     res.render('new-post');
 });
 
