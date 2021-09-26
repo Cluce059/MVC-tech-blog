@@ -87,21 +87,29 @@ router.get('/post/:id', (req, res) => {
     });
 });
 
-router.get('/login', (req, res) => {
+router.get('/login', (req, res, err) => {
   if (req.session.loggedIn) {
     res.redirect('/');
     return;
-  }
+  } if(err){
+    console.log(err);
+  } else {
   res.render('login');
+  }
 });
 
 // redirect to homepage is user is signed in
-router.get('/signup', (req, res) => {
+router.get('/signup', (req, res, err) => {
   if (req.session.loggedIn) {
     res.redirect('/');
     return;
   }
-  res.render('signup');
+  if(err){
+    console.log(err);
+  } else {
+    res.render('signup');
+  }
+  
 });
 
 module.exports = router;
