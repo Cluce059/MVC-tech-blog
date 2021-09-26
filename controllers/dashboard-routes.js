@@ -13,8 +13,8 @@ router.get('/', withAuth, (req, res) => {
     },
     attributes: [
       'id',
-      'post_text',
       'title',
+      'post_text',
       'created_at'
     ],
     include: [
@@ -37,7 +37,7 @@ router.get('/', withAuth, (req, res) => {
       res.render('dashboard', { posts, loggedIn: true });
     })
     .catch(err => {
-      console.log(err);
+      console.log("error here" + err);
       res.status(500).json(err);
     });
 });

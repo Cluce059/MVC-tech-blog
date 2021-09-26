@@ -20,18 +20,8 @@ const postData = [
     title: 'Sessions',
     post_text: 'When a user logs in, a session can be established using a package such as Express Session. A cookie will be saved on the user computer, authenticating them on the website. Cookies can be set for a limited time or indefinitely.',
     user_id: 3,
-  },
-  {
-    title: 'Hashing',
-    post_text: 'A very important part of user authentication is hashing passwords. When a user creates a password and when they log in, sensitive information like the password should be protected. bcrypt is a popular npm package that accomplishes this task.',
-    user_id: 4,
-  },
-  {
-    title: 'Express.js',
-    post_text: 'Express.js is an easy way to set up a server with JavaScript. With a few lines of code, you can be on your way to hosting a dynamic webpage.',
-    user_id: 5,
-  },
-]
+  }
+];
 
 const seedPosts = () => Post.bulkCreate(postData);
 
