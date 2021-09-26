@@ -3,10 +3,9 @@
   --secondary: #dce9d5;
   --tertiary: #788585;
   --light-dark: #a1a0a1;
-  --dark: #201110;
+  --dark: #070606;
   --border-radius: .3rem;
 }
-
 * {
   box-sizing: border-box;
 }
@@ -21,15 +20,11 @@ body {
   font-size: 24px;
 }
 
-h1,
-h2,
-h3,
-h5,
-h6 {
+h1, h2, h3, h5, h6 {
   font-weight: 700;
   margin: 0;
   color: var(--dark);
-  line-height: 1.25;
+  line-height:1.25;
 }
 
 .link-color {
@@ -82,7 +77,7 @@ p {
 }
 
 .btn-back {
-  border-radius: var(--border-radius);
+  border-radius:var(--border-radius);
   color: var(--primary);
   border: none;
   outline: none;
@@ -105,7 +100,7 @@ p {
 }
 
 .hero {
-  padding: 3% 4%;
+  padding: 4% 5%;
   background-color: var(--dark);
   color: var(--primary);
 }

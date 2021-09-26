@@ -109,5 +109,11 @@ router.get('/edituser', withAuth, (req, res) => {
       res.status(500).json(err);
     })
   });
+
+  //new post
+  router.get('/new', (req, res) => {
+    res.render('new-post');
+});
+
   
 module.exports = router;
